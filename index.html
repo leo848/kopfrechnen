@@ -1,0 +1,140 @@
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+<style>
+body {
+  font-family: -apple-system, sans-serif;
+  font-size: 100px;
+  height: 100%;
+}
+#container {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+#aufgabe {
+  position: absolute;
+  font-size: 50pt;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: transparent;
+  transition: 3s ease;
+}
+#input {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 5%;
+  font-size: 20px;
+  font-color: black;
+  font-family: -apple-system, sans-serif;
+}
+
+#button {
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border-radius: 5px;
+  width: 40%;
+  height: 5%;
+  font-size: 20px;
+}
+
+#wrong {
+  position: absolute;
+  left: 80%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  padding: 0px 3px;
+}
+#right {
+  position: absolute;
+  left: 20%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  padding: 0px 3px;
+}
+
+#timer {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 0px 3px;
+}
+</style>
+<div id="container">
+  <div id="aufgabe">Leo</div>
+</div>
+<div id="right">-1</div>
+<div id="wrong">0</div>
+<div id="timer">5</div>
+<input id="input" type="number" autofocus>
+<input type="button" value="Lösen!" id="button" onclick="myFunction()">
+<p id="demo"></p>
+<script>
+
+const a = document.getElementById("aufgabe");
+const i = document.getElementById("input");
+const r = document.getElementById("right");
+const w = document.getElementById("wrong");
+const t = document.getElementById("timer");
+const b = document.getElementById("button");
+const d = document.getElementById("demo");
+const op = "+-*";
+var or, e, r1, r2
+
+//  || isNaN(Number(a.innerHTML)
+
+function myFunction() {
+  if (i.value == e || a.innerHTML == "Leo" || isNaN(e)){
+    
+    or = op[Math.floor(Math.random()*op.length)]
+  r1 = (or === "+" || or === "-") ? Math.floor(Math.random()*70) : Math.floor(Math.random()*13)
+  r2 = (or === "+" || or === "-") ? Math.floor(Math.random()*50) : Math.floor(Math.random()*10)
+  e = (or == "+") ? r1 + r2 :
+  or == "-" ? r1 - r2 :
+  or == "*" ? r1 * r2 : NaN;
+  
+  document.getElementById("demo").innerHTML = e;
+  a.innerHTML = r1 + or + r2;
+  i.value = null;
+  r.innerHTML = Number(r.innerHTML)+1;
+  } else if(i.value != "") {
+  w.innerHTML = Number(w.innerHTML)+1;
+  i.value = null;
+  }
+  
+  
+  
+};
+
+myFunction();
+function ererer(){
+	if(t.innerHTML > 1){
+	t.innerHTML--;
+	} else {
+	i.setAttribute("hidden", "");
+	t.setAttribute("hidden", "");
+	a.setAttribute("hidden", "");
+	b.setAttribute("hidden", "");
+	d.setAttribute("hidden", "");
+}
+	
+	
+}
+setInterval(ererer, 1000)
+
+</script>
